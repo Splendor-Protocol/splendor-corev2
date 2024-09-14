@@ -6,9 +6,9 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	keepertest "planet/testutil/keeper"
-	"planet/x/blog/keeper"
-	"planet/x/blog/types"
+	keepertest "blog/testutil/keeper"
+	"blog/x/blog/keeper"
+	"blog/x/blog/types"
 )
 
 func setupMsgServer(t testing.TB) (keeper.Keeper, types.MsgServer, context.Context) {

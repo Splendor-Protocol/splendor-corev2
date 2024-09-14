@@ -15,48 +15,29 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 	govtypes "github.com/cosmos/cosmos-sdk/x/gov/types"
-	capabilitykeeper "github.com/cosmos/ibc-go/modules/capability/keeper"
-	portkeeper "github.com/cosmos/ibc-go/v8/modules/core/05-port/keeper"
-	ibcexported "github.com/cosmos/ibc-go/v8/modules/core/exported"
-	ibckeeper "github.com/cosmos/ibc-go/v8/modules/core/keeper"
 	"github.com/stretchr/testify/require"
 
-	"planet/x/blog/keeper"
-	"planet/x/blog/types"
+	"blog/x/blog/keeper"
+	"blog/x/blog/types"
 )
 
 func BlogKeeper(t testing.TB) (keeper.Keeper, sdk.Context) {
 	storeKey := storetypes.NewKVStoreKey(types.StoreKey)
-	memStoreKey := storetypes.NewMemoryStoreKey(types.MemStoreKey)
 
 	db := dbm.NewMemDB()
 	stateStore := store.NewCommitMultiStore(db, log.NewNopLogger(), metrics.NewNoOpMetrics())
 	stateStore.MountStoreWithDB(storeKey, storetypes.StoreTypeIAVL, db)
-	stateStore.MountStoreWithDB(memStoreKey, storetypes.StoreTypeMemory, nil)
 	require.NoError(t, stateStore.LoadLatestVersion())
 
 	registry := codectypes.NewInterfaceRegistry()
-	appCodec := codec.NewProtoCodec(registry)
-	capabilityKeeper := capabilitykeeper.NewKeeper(appCodec, storeKey, memStoreKey)
+	cdc := codec.NewProtoCodec(registry)
 	authority := authtypes.NewModuleAddress(govtypes.ModuleName)
 
-	scopedKeeper := capabilityKeeper.ScopeToModule(ibcexported.ModuleName)
-	portKeeper := portkeeper.NewKeeper(scopedKeeper)
-	scopeModule := capabilityKeeper.ScopeToModule(types.ModuleName)
-
 	k := keeper.NewKeeper(
-		appCodec,
+		cdc,
 		runtime.NewKVStoreService(storeKey),
 		log.NewNopLogger(),
 		authority.String(),
-		func() *ibckeeper.Keeper {
-			return &ibckeeper.Keeper{
-				PortKeeper: &portKeeper,
-			}
-		},
-		func(string) capabilitykeeper.ScopedKeeper {
-			return scopeModule
-		},
 	)
 
 	ctx := sdk.NewContext(stateStore, cmtproto.Header{}, false, log.NewNopLogger())

@@ -5,8 +5,8 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	keepertest "planet/testutil/keeper"
-	"planet/x/blog/types"
+	keepertest "blog/testutil/keeper"
+	"blog/x/blog/types"
 )
 
 func TestParamsQuery(t *testing.T) {

@@ -8,9 +8,9 @@ import (
 	simtypes "github.com/cosmos/cosmos-sdk/types/simulation"
 	"github.com/cosmos/cosmos-sdk/x/simulation"
 
-	"planet/testutil/sample"
-	blogsimulation "planet/x/blog/simulation"
-	"planet/x/blog/types"
+	"blog/testutil/sample"
+	blogsimulation "blog/x/blog/simulation"
+	"blog/x/blog/types"
 )
 
 // avoid unused import issue
@@ -34,7 +34,6 @@ func (AppModule) GenerateGenesisState(simState *module.SimulationState) {
 	}
 	blogGenesis := types.GenesisState{
 		Params: types.DefaultParams(),
-		PortId: types.PortID,
 		// this line is used by starport scaffolding # simapp/module/genesisState
 	}
 	simState.GenState[types.ModuleName] = simState.Cdc.MustMarshalJSON(&blogGenesis)

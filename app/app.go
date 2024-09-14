@@ -75,15 +75,15 @@ import (
 	ibctransferkeeper "github.com/cosmos/ibc-go/v8/modules/apps/transfer/keeper"
 	ibckeeper "github.com/cosmos/ibc-go/v8/modules/core/keeper"
 
-	blogmodulekeeper "planet/x/blog/keeper"
+	blogmodulekeeper "blog/x/blog/keeper"
 	// this line is used by starport scaffolding # stargate/app/moduleImport
 
-	"planet/docs"
+	"blog/docs"
 )
 
 const (
 	AccountAddressPrefix = "cosmos"
-	Name                 = "planet"
+	Name                 = "blog"
 )
 
 var (

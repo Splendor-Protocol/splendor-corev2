@@ -5,7 +5,7 @@ import (
 
 	"github.com/cosmos/cosmos-sdk/runtime"
 
-	"planet/x/blog/types"
+	"blog/x/blog/types"
 )
 
 // GetParams get all parameters as types.Params

@@ -3,10 +3,6 @@ package app
 import (
 	"time"
 
-	blogmodulev1 "planet/api/planet/blog/module"
-	_ "planet/x/blog/module" // import for side-effects
-	blogmoduletypes "planet/x/blog/types"
-
 	runtimev1alpha1 "cosmossdk.io/api/cosmos/app/runtime/v1alpha1"
 	appv1alpha1 "cosmossdk.io/api/cosmos/app/v1alpha1"
 	authmodulev1 "cosmossdk.io/api/cosmos/auth/module/v1"
@@ -56,6 +52,10 @@ import (
 	ibctransfertypes "github.com/cosmos/ibc-go/v8/modules/apps/transfer/types"
 	ibcexported "github.com/cosmos/ibc-go/v8/modules/core/exported"
 	"google.golang.org/protobuf/types/known/durationpb"
+
+	blogmodulev1 "blog/api/blog/blog/module"
+	_ "blog/x/blog/module" // import for side-effects
+	blogmoduletypes "blog/x/blog/types"
 	// this line is used by starport scaffolding # stargate/app/moduleImport
 )
 

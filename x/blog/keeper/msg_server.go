@@ -1,7 +1,7 @@
 package keeper
 
 import (
-	"planet/x/blog/types"
+	"blog/x/blog/types"
 )
 
 type msgServer struct {
