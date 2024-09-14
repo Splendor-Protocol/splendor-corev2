@@ -39,6 +39,17 @@ func (am AppModule) AutoCLIOptions() *autocliv1.ModuleOptions {
 					Short:          "Shows a sentPost by id",
 					PositionalArgs: []*autocliv1.PositionalArgDescriptor{{ProtoField: "id"}},
 				},
+				{
+					RpcMethod: "TimeoutPostAll",
+					Use:       "list-timeout-post",
+					Short:     "List all timeoutPost",
+				},
+				{
+					RpcMethod:      "TimeoutPost",
+					Use:            "show-timeout-post [id]",
+					Short:          "Shows a timeoutPost by id",
+					PositionalArgs: []*autocliv1.PositionalArgDescriptor{{ProtoField: "id"}},
+				},
 				// this line is used by ignite scaffolding # autocli/query
 			},
 		},
