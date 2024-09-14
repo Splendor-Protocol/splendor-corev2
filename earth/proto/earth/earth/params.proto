@@ -1,0 +1,15 @@
+syntax = "proto3";
+package earth.earth;
+
+import "amino/amino.proto";
+import "gogoproto/gogo.proto";
+
+option go_package = "earth/x/earth/types";
+
+// Params defines the parameters for the module.
+message Params {
+  option (amino.name) = "earth/x/earth/Params";
+  option (gogoproto.equal) = true;
+
+  
+}

@@ -1,0 +1,17 @@
+syntax = "proto3";
+package earth.earth;
+
+import "amino/amino.proto";
+import "gogoproto/gogo.proto";
+import "earth/earth/params.proto";
+
+option go_package = "earth/x/earth/types";
+
+// GenesisState defines the earth module's genesis state.
+message GenesisState {
+  // params defines all the parameters of the module.
+  Params params = 1 [
+    (gogoproto.nullable) = false,
+    (amino.dont_omitempty) = true
+  ];
+}
