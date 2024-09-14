@@ -1,22 +1,28 @@
 version: 1
-validation: sovereign
-accounts: 
+build:
+  proto:
+    path: proto
+    third_party_paths:
+    - third_party/proto
+    - proto_vendor
+accounts:
 - name: alice
   coins:
-  - 20000token
-  - 200000000stake
+  - 1000token
+  - 100000000stake
 - name: bob
   coins:
-  - 10000token
+  - 500token
   - 100000000stake
-client:
-  openapi:
-    path: docs/static/openapi.yml
 faucet:
   name: bob
   coins:
   - 5token
   - 100000stake
+  host: 0.0.0.0:4500
+genesis:
+  chain_id: earth
 validators:
 - name: alice
   bonded: 100000000stake
+  home: $HOME/.earth
