@@ -37,9 +37,9 @@ services:
     networks:
       priv-eth-net:
 
-  networks:
-    priv-eth-net:
-      driver: bridge
-      ipam:
-        config:
-          - subnet: 172.16.254.0/28
+networks:
+  priv-eth-net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.16.254.0/28
