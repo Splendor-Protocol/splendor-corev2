@@ -1,7 +1,0 @@
-Node 1
-
-public address: 0x0bce7F6280AE07013F06498b547bbF15D2C1ef63
-
-Node 2
-
-public address: 0xAb9529AD81CBED1194E3Bc9C3181237AcE3FD1BF
